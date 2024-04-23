@@ -14,6 +14,11 @@ Documenting the project of turning a Raspberry Pi Zero 2W into a time-lapse came
 1.  [Remote access on the Pi](https://www.raspberrypi.com/documentation/computers/remote-access.html)
 2.  [Camera software documentation](https://www.raspberrypi.com/documentation/computers/camera_software.html)
 
+## Links from Carl K at Python Office Hours
+1.  https://github.com/CarlFK/pici/blob/main/ansible/roles/cam/pi/files/gst-libcam.sh#L23
+2.  https://github.com/CarlFK/pici/issues/15
+3.  https://github.com/pikvm/ustreamer
+4.  https://github.com/CarlFK/pici/tree/main/tools/mkpisd
 ## Strategy
 ### The zero-code way
 
