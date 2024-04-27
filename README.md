@@ -31,3 +31,14 @@ Ideally users would be able to see where the camera was pointed on their phones,
 ## Images to video
 
 There appear to be multiple ways to do this.  The easiest to do programmatically or through the command line is probably https://ffmpeg.org/ based on some quick searches and reading forum posts.  But the forum posts were light on details.
+
+## Scripts for the easy way
+### Client script
+
+The bash script below fetches all the images and then uses `ffmpeg` to creatt the timelapse video.  Using a script reduces the chances that someone - by which I mean myself - will accideentally swap the arguments to `scp` or become too frustrated trying to remember the arguments to `ffmpeg`.
+
+```bash
+#!/bin/bash
+scp -r perkinsd@plantpi.local:timelapse/ .
+ffmpeg -f image2 -pattern_type glob -i 'timelapse/*.jpg' timelapse.mp4
+````
