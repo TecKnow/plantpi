@@ -39,6 +39,20 @@ The bash script below fetches all the images and then uses `ffmpeg` to creatt th
 
 ```bash
 #!/bin/bash
-scp -r perkinsd@plantpi.local:timelapse/ .
+rsync -aPz plantpi.local:timelapse timelapse
 ffmpeg -f image2 -pattern_type glob -i 'timelapse/*.jpg' timelapse.mp4
 ````
+
+### Camera-side script
+
+```bash                                                #!/bin/bash
+rpicam-still --timelapse 30000 --timeout 0 --datetime --nopreview --vflip -o /home/perkinsd/timelapse/
+```
+The above script will take a picture every 30 seconds indefinitely.  The filename will be the datetetime as a series of digits in the format MMDDHHMMSS.jpg and the `--vflip` argument is needed to treat the side of the camera that receives the cable as the top.  the `--nopreview` option cuts down on log output significantly, and doesn't reduce functionality since there's no monitor to view the preview on.
+
+### crontab entry for the camera script
+
+```
+@reboot /home/perkinsd/lapse.sh >> /home/perkinsd/lapse_log 2>&1
+```
+The above script starts the timelapse camera on system reboot.  The log is written to a file because by default, cron would rather mail it and there's no mail agent to do so, so the output is lost. 
