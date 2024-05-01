@@ -56,3 +56,23 @@ The above script will take a picture every 30 seconds indefinitely.  The filenam
 @reboot /home/perkinsd/lapse.sh >> /home/perkinsd/lapse_log 2>&1
 ```
 The above script starts the timelapse camera on system reboot.  The log is written to a file because by default, cron would rather mail it and there's no mail agent to do so, so the output is lost. 
+
+# Pi Zero transfer speeds
+Copying the images to my desktop to stitch them into a video is very, very slow.  It takes over two hours to transfer about 4.5 gigabytes of data.  This seems unreasonably slow so it should be possible to improve it.  I'm trying tdifferent methods of copying the files from the pi to my desktop, documented below.
+
+It's worth nothing that the pi currently has a 256 GB A2 class microSD card inserted.  I recently learned that A2 cards must be paired with an A2 reader to deliver the required performance.  If an A2 card is paired with an A1 reader, it may perform below the A1 standcard.  This could be a factor, so I might want to repeat this test with an A1 card.  If I did repeat the tests, they'd be on a different pi zero in a different location, although on the same network.  The comparison would not be exact but the results could still be very clear given the lengths of time involved.
+
+The tests were run on a directory containing 5,621 jpeg files occupying 4781721400 bytes or about 4.5 gigabytes.
+
+The bash time command outputs its results to stderr, and writing the command to redirect the output of time, not just the command being timed, was a bit fiddly.
+
+The commands used were as follows.
+
+1. { time rsync -aPz plantpi.local:timelapse/ timelapse ; } 2> rsync_time.txt 
+2. { time scp -r plantpi.local:timelapse/ timelapse ; } 2> scp_time.txt
+
+|method|real|user|sys|
+|---|---|---|---|
+|rsync|173m 12.319s| 0m 21.341s | 0m 31.013s|
+|scp | 130m 9.287s | 0m 16.195s | 0m 30.163s |
+|tar pipe | | | | |
