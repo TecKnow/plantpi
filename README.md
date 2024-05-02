@@ -63,16 +63,17 @@ Copying the images to my desktop to stitch them into a video is very, very slow.
 It's worth nothing that the pi currently has a 256 GB A2 class microSD card inserted.  I recently learned that A2 cards must be paired with an A2 reader to deliver the required performance.  If an A2 card is paired with an A1 reader, it may perform below the A1 standcard.  This could be a factor, so I might want to repeat this test with an A1 card.  If I did repeat the tests, they'd be on a different pi zero in a different location, although on the same network.  The comparison would not be exact but the results could still be very clear given the lengths of time involved.
 
 The tests were run on a directory containing 5,621 jpeg files occupying 4781721400 bytes or about 4.5 gigabytes.
-
+                                                    
 The bash time command outputs its results to stderr, and writing the command to redirect the output of time, not just the command being timed, was a bit fiddly.
 
 The commands used were as follows.
 
 1. { time rsync -aPz plantpi.local:timelapse/ timelapse ; } 2> rsync_time.txt 
 2. { time scp -r plantpi.local:timelapse/ timelapse ; } 2> scp_time.txt
+3. { time ssh plantpi.local "tar czf - timelapse" | tar xvzf - ; } 2>tar_pipe.txt 
 
 |method|real|user|sys|
 |---|---|---|---|
 |rsync|173m 12.319s| 0m 21.341s | 0m 31.013s|
 |scp | 130m 9.287s | 0m 16.195s | 0m 30.163s |
-|tar pipe | | | | |
+|tar pipe |97m 56.873s | 0m 33.002s|0m 34.254s |
