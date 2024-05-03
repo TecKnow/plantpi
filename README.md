@@ -85,4 +85,4 @@ The commands used were as follows.
 |---|---|---|---|
 |rsync| 127m 4.570s| 0m 16.424s | 0m 23.911s |
 |scp | 133m 13.183s | 0m 16.920s | 0m 32.234s |
-|tar pipe | |  |  |
+|tar pipe | 107m 43.583s | 0m 36.185s | 0m 36.615 |
