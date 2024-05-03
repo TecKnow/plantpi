@@ -72,8 +72,17 @@ The commands used were as follows.
 2. { time scp -r plantpi.local:timelapse/ timelapse ; } 2> scp_time.txt
 3. { time ssh plantpi.local "tar czf - timelapse" | tar xvzf - ; } 2>tar_pipe.txt 
 
+## In the garden
 |method|real|user|sys|
 |---|---|---|---|
 |rsync|173m 12.319s| 0m 21.341s | 0m 31.013s|
 |scp | 130m 9.287s | 0m 16.195s | 0m 30.163s |
 |tar pipe |97m 56.873s | 0m 33.002s|0m 34.254s |
+
+
+## At my desk
+|method|real|user|sys|
+|---|---|---|---|
+|rsync| 127m 4.570s| 0m 16.424s | 0m23.911s |
+|scp |  |  |  |
+|tar pipe | |  |  |
