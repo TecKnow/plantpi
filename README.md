@@ -83,6 +83,6 @@ The commands used were as follows.
 ## At my desk
 |method|real|user|sys|
 |---|---|---|---|
-|rsync| 127m 4.570s| 0m 16.424s | 0m23.911s |
-|scp |  |  |  |
+|rsync| 127m 4.570s| 0m 16.424s | 0m 23.911s |
+|scp | 133m 13.183s | 0m 16.920s | 0m 32.234s |
 |tar pipe | |  |  |
