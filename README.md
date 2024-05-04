@@ -91,5 +91,5 @@ The commands used were as follows.
 |method|real|user|sys|
 |---|---|---|---|
 |rsync| 36m 54.465s | 0m 12.392s | 0m 20.330s |
-|scp |  |  |  |
+|scp | 74m 9.814s | 0m 13.018s | 0m 25.453s |
 |tar pipe |  |  |  |
