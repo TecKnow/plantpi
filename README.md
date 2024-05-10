@@ -93,3 +93,14 @@ The commands used were as follows.
 |rsync| 36m 54.465s | 0m 12.392s | 0m 20.330s |
 |scp | 74m 9.814s | 0m 13.018s | 0m 25.453s |
 |tar pipe | 55m 43.859s | 0m 29.817s | 0m 28.856s |
+
+#  Tempreature problems?
+
+The pi has been freezing when I try to retrieve the photos.  The system journal indicated that the WiFi module was the problem.  Some searching suggested that people have fewer problems with this using the 32-bit version of the OS, and that it may be an overheating problem.  I monitored the system temperature during one attempted retrieval and it exceeded 75C, which is apparently the temperature when the Pi should start throttling itself, and it froze instead.
+
+Here's the command I used to monitor the temperature:
+
+```
+watch -n 1 vcgencmd measure_temp
+```
+from https://pimylifeup.com/raspberry-pi-monitor-temperature/
