@@ -104,3 +104,10 @@ Here's the command I used to monitor the temperature:
 watch -n 1 vcgencmd measure_temp
 ```
 from https://pimylifeup.com/raspberry-pi-monitor-temperature/
+
+##  Temperature under the 32-bit OS
+
+I reimaged the Pi to use the 32-bit version of the OS.  Now I can transfer the files without overheating if I do it at my desk whereas before it would crash even then.  Unfortunately, it still crashes if I try to download the pictures while it's in the garden.  I've ordered case with fans.  This may cause the camera to vibrate, if we continue wit hthe camera taped to the case.
+
+#  Camera startup
+When I switched two the 32-bit version of the OS I started receiving errors from the cron job indicating that no cameras were available.  But running the script manually still worked.  It apepars that the camera isn't ready by the time the cron job runs.  I have introduced a 30 second sleep in the cron job script to get around this.  If I were more ambitious, I'd move the repitition into the schell script instead of relying on the camera command line so that it would keep trying instead of aborting at the first failure.
